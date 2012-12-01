@@ -43,6 +43,10 @@ public class Login extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
 	    HttpServletRequest request, HttpServletResponse response)
 	    throws Exception {
+	String success = "";
+	String redirect = "";
+	String errorTenDN="";
+	String errorMK="";
 	HttpSession session=request.getSession();
 	session.setAttribute("success", "");
 	session.setAttribute("errorTenDN", errorTenDN);
@@ -52,30 +56,40 @@ public class Login extends org.apache.struts.action.Action {
             session.setAttribute("KhachHang",null);
         }
         if (session.getAttribute("KhachHang") != null)
-            return mapping.findForward("siteMaster");
+            return mapping.findForward("home");
 	
 	// Xu ly login
-	String txtTenDN=request.getParameter("txtTenDN");
-	String txtPassword=request.getParameter("txtPassword");
-	DTO.KhachHang kh = BO.BO_KhachHang.KTraDangNhap(txtTenDN, txtPassword);
-        if (kh != null && !kh.getTenKH().equals(""))
-        {
-            success = "Đăng nhập thành công";
-            if (request.getParameter("view") != null)
-            {
-                redirect = request.getParameter("view");
-            }
-            session.setAttribute("KhachHang",kh);
-            if (redirect != "")
-            {
-                return mapping.findForward(redirect);
-            }
-            else
-                return mapping.findForward("login");
-        }
-        else
-            success = "Lỗi: Không thể đăng nhập vui lòng kiểm tra lại tên đăng nhập/mật khẩu";
-	
+	if (request.getParameter("method")!=null && request.getParameter("method").equals("login"))
+	{
+	    DTO.KhachHang kh=new DTO.KhachHang();
+	    try
+	    {
+	    String txtTenDN=request.getParameter("txtTenDN");
+	    String txtPassword=request.getParameter("txtPassword");
+	    kh = BO.BO_KhachHang.KTraDangNhap(txtTenDN, txtPassword);
+	    }catch(Exception ex){
+		kh=null;
+	    }
+	    if (kh != null && !kh.getTenKH().equals(""))
+	    {
+		success = "Đăng nhập thành công";
+		if (request.getParameter("view") != null)
+		{
+		    redirect = request.getParameter("view");
+		}
+		session.setAttribute("KhachHang",kh);
+		session.setAttribute("success", success);
+		if (redirect != "")
+		{
+		    return mapping.findForward(redirect);
+		}
+		else
+		    return mapping.findForward("home");
+	    }
+	    else
+		success = "Lỗi: Không thể đăng nhập vui lòng kiểm tra lại tên đăng nhập/mật khẩu";
+	}
+	session.setAttribute("success", success);
 	return mapping.findForward("login");
     }
 }
