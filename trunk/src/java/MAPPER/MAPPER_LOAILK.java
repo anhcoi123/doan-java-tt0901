@@ -35,17 +35,17 @@ public class MAPPER_LOAILK {
     }
     public static int InsertLoaiLK(String maloailk,String tenloailk)
     {
-        String sqlInsert="EXEC SP_THEMLOAILK @"+maloailk+",@"+tenloailk;
+        String sqlInsert="EXEC SP_THEMLOAILK '"+maloailk+"','"+tenloailk+"'";
         return MAPPERDB.ExecuteQueryString(sqlInsert);
     }
     public static int UpdateLoaiLK(String maloailk,String tenloailk)
     {
-        String sqlUpdate="UPDATE LOAILK SET TENLOAILK=@"+tenloailk+" WHERE MALOAILK=@"+maloailk;
+        String sqlUpdate="UPDATE LOAILK SET TENLOAILK='"+tenloailk+"' WHERE MALOAILK='"+maloailk+"'";
         return MAPPERDB.ExecuteQueryString(sqlUpdate);
     } 
     public static ResultSet TimLoaiLK_MaLoaiLK(String maloailk)
     {
-        String sql="EXEC SP_TATCALOAILK_MALOAILK @"+maloailk;
+        String sql="EXEC SP_TATCALOAILK_MALOAILK '"+maloailk+"'";
         return MAPPERDB.getResultSet(sql);
     }
     public static DTO.LoaiLK searchLoaiLK(String id) throws SQLException 
