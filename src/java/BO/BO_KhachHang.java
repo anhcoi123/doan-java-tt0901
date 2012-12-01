@@ -4,6 +4,7 @@
  */
 package BO;
 
+import MAPPER.MAPPER_KHACHHANG;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -31,7 +32,7 @@ public class BO_KhachHang {
 
         public static DTO.KhachHang KTraDangNhap(String tendangnhap, String matkhau)
         {
-            ResultSet dt = DAL_KHACHHANG.DTDanhSachKH();
+            ResultSet dt = MAPPER_KHACHHANG.DTDanhSachKH();
             DTO.KhachHang kh=new DTO.KhachHang();
 	try {
 	    while (dt.next())

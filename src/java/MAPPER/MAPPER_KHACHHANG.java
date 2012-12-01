@@ -5,6 +5,7 @@
 package MAPPER;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -21,50 +22,55 @@ public class MAPPER_KHACHHANG {
 
     public static ResultSet DTDanhSachKH()
     {
-	return MAPPERDB.GetResultSet(sqlDanhSachKH);
+	return MAPPERDB.getResultSet(sqlDanhSachKH);
     }
     public static int SoDongBangKH()
     {
-	return MAPPERDB.GetResultSet(sqlDanhSachKH1).Rows.Count;
+	ResultSet rs = MAPPERDB.getResultSet(sqlDanhSachKH1);
+	int totalRow=0;
+	try
+	{
+	    rs.last();
+	    totalRow=rs.getRow();
+	}catch(Exception ex){
+	}
+	return totalRow;
     }
 
     public static ResultSet DTTatCaUser()
     {
-	return MAPPERDB.GetResultSet(sqlKhachHang);
+	return MAPPERDB.getResultSet(sqlKhachHang);
     }
 
     public static int InsertKH(String makh, String tenkh, String tendn, String matkhau, String diachi, String sodt, String cmnd, String role)
     {
-	String[] paraName = new String[] { "@MAKH", "@TENKH", "@TENDANGNHAP", "@MATKHAU", "@DIACHI", "@SODT", "@CMND", "@ROLE" };
-	object[] paraValue = new object[] { makh, tenkh, tendn, matkhau, diachi, sodt, cmnd, role };
-	return MAPPERDB.ExecNonQuery(sqlInsert, paraName, paraValue);
+	String sqlInsert = "EXEC SP_THEMKHACHHANG '" +makh+"','"+ tenkh+"','"+ tendn+"','"+ matkhau+"','"+ diachi+"','"+ sodt+"','"+ cmnd+"','"+ role+"'";
+	return MAPPERDB.ExecuteQueryString(sqlInsert);
     }
     public static int UpdateKH(String makh, String tenkh, String matkhau, String diachi, String sodt, String cmnd, String role)
     {
-	String[] paraName = new String[] { "@MAKH", "@TENKH", "@MATKHAU", "@DIACHI", "@SODT", "@CMND", "@ROLE" };
-	object[] paraValue = new object[] { makh, tenkh, matkhau, diachi, sodt, cmnd, role };
-	return MAPPERDB.ExecNonQuery(sqlUpdate, paraName, paraValue);
+	String sqlUpdate = "UPDATE KHACHHANG SET TENKH='"+tenkh+"' MATKHAU='"+matkhau+"' DIACHI='"+diachi+"' SODT='"+sodt+"' CMND='"+cmnd+"',ROLE='"+role+"' WHERE MAKH='"+makh+"'";	
+	return MAPPERDB.ExecuteQueryString(sqlUpdate);
     }
 
-    public static DAO.KhachHang searchKH(String id)
+    public static DTO.KhachHang searchKH(String id) throws SQLException
     {
 	String[] paraName = new String[] { "@MAKH" };
 	String[] paraValue = new String[] { id };
-	ResultSet dtKH = MAPPERDB.GetResultSet(sqlSearchKH_MAKH, paraName, paraValue);
-	DAO.KhachHang kh = new DAO.KhachHang();
-	kh.TenKH = dtKH.Rows[0]["TENKH"].ToString();
-	kh.MatKhau = dtKH.Rows[0]["MATKHAU"].ToString();
-	kh.DiaChi = dtKH.Rows[0]["DIACHI"].ToString();
-	kh.SoDT = dtKH.Rows[0]["SODT"].ToString();
-	kh.CMND = dtKH.Rows[0]["CMND"].ToString();
-	kh.Role = dtKH.Rows[0]["ROLE"].ToString();
+	ResultSet dtKH = MAPPERDB.getResultSet(sqlSearchKH_MAKH);
+	DTO.KhachHang kh = new DTO.KhachHang();
+	kh.setTenKH(dtKH.getString("TENKH"));
+	kh.setMatKhau(dtKH.getString("MATKHAU"));
+	kh.setDiaChi(dtKH.getString("DIACHI"));
+	kh.setSoDT(dtKH.getString("SODT"));
+	kh.setCMND(dtKH.getString("CMND"));
+	kh.setRole(dtKH.getString("ROLE"));
 	return kh;
     }
 
     public static ResultSet TimKH_MaKH(String makh)
     {
-	String[] paraName = new String[] { "@MAKH" };
-	object[] paraValue = new object[] { makh };
-	return MAPPERDB.GetResultSet(sqlSearchKH_MAKH, paraName, paraValue);
+	String sql="EXEC SP_TIMKHACHHANG_MAKH '"+makh+"'";
+	return MAPPERDB.getResultSet(sql);
     }
 }
