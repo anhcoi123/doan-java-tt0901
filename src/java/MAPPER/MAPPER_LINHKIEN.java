@@ -73,42 +73,36 @@ public class MAPPER_LINHKIEN {
 
         public static int AddLK(String malk, String tenlk, String dvtinh, int soluong, int dongia, String thongtin, String hinhanh, String maloailk, String mansx)
         {
-	    String sqlAdd = "EXECUTE SP_THEMLK '"+malk+"','"+tenlk+"',@DVTINH,@SOLUONG,@DONGIA,@THONGTIN,@HINHANH,@MALOAILK,@MANSX";
-            object[] paraValue = new object[] { malk, tenlk, dvtinh, soluong, dongia, thongtin, hinhanh, maloailk, mansx };
-            return MAPPERDB.ExecuteQueryString(sqlAdd);
+	    String sqlAddLK="EXECUTE SP_THEMLK '"+malk+"','"+tenlk+"','"+dvtinh+"',"+soluong+","+dongia+",'"+thongtin+"','"+hinhanh+"','"+maloailk+"','"+mansx+"'";
+            return MAPPERDB.ExecuteQueryString(sqlAddLK);
         }
 
         public static int UpdateLK(String malk,String tenlk, int dongia)
         {
-            String[] paraName = new String[] {"@MALK", "@TENLK", "@DONGIA"};
-            object[] paraValue = new object[] {malk, tenlk, dongia};
-            return MAPPERDB.ExecuteQueryString(sqlUpdate);
+            String sqlUpdateLK="UPDATE LINHKIEN SET TENLK='"+tenlk+"',"+dongia+" WHERE MALK='"+malk+"'";    
+            return MAPPERDB.ExecuteQueryString(sqlUpdateLK);
         }
 
         public static int XoaLK(String malk)
         {
-            String[] paraName = new String[] { "@MALK" };
-            object[] paraValue = new object[] { malk };
-            return MAPPERDB.ExecuteQueryString(sqlDelete);
+            String sqlXoaLK="DELETE FROM LINHKIEN WHERE MALK='"+malk+"'";
+            return MAPPERDB.ExecuteQueryString(sqlXoaLK);
         }
 
         public static ResultSet TimLK_Malk(String malk)
         {
-            String[] paraName = new String[] { "@MALK" };
-            object[] paraValue = new object[] { malk };
-            return MAPPERDB.getResultSet(sqlTimKiemMaLK);
+            String sqlSearch="SELECT * LINHKIEN WHERE MALK='"+malk+"'";
+            return MAPPERDB.getResultSet(sqlSearch);
         }
 
         public static ResultSet TimLK_TenLK(String tenlk)
         {
-            String[] paraName = new String[] { "@TENLK" };
-            object[] paraValue = new object[] { tenlk };
-            return MAPPERDB.getResultSet(sqlTimKiemTenLK);
+            String sqlSearch="SELECT * LINHKIEN WHERE MALK='"+tenlk+"'";
+            return MAPPERDB.getResultSet(sqlSearch);
         }
         public static ResultSet TimLK_TenNSX(String tennsx)
         {
-            String[] paraName = new String[] { "@TENNSX" };
-            object[] paraValue = new object[] { tennsx };
-            return MAPPERDB.getResultSet(sqlTimKiemTenNSX);
+            String sqlSearch="EXECUTE SP_TIMLK_NHASX '"+tennsx+"'";
+            return MAPPERDB.getResultSet(sqlSearch);
         }
 }
