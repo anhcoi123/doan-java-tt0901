@@ -25,6 +25,7 @@ public class LinhKien
 
         private String _hinhAnh;
 
+	private String _mansx;
     /**
      * @return the _maLK
      */
@@ -121,6 +122,20 @@ public class LinhKien
      */
     public void setHinhAnh(String hinhAnh) {
 	this._hinhAnh = hinhAnh;
+    }
+
+    /**
+     * @return the _mansx
+     */
+    public String getMansx() {
+	return _mansx;
+    }
+
+    /**
+     * @param mansx the _mansx to set
+     */
+    public void setMansx(String mansx) {
+	this._mansx = mansx;
     }
 
     }
