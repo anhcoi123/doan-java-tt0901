@@ -59,17 +59,18 @@ public class BO_KhachHang {
         {
             String makh=TaoMaKH();
             ResultSet dt = MAPPER_KHACHHANG.DTDanhSachKH();
-	try {
-	    while (dt.next())
-	    {
-		if (dt.getString("TENDANGNHAP").trim().equals(tendn))
-		    return "Lỗi: Đã có người sử dụng tên đăng nhập này, vui lòng chọn tên đăng nhập khác";
-		if (dt.getString("CMND").trim().equals(cmnd))
-		    return "Lỗi: Đã có người sử dụng số CMND này, vui lòng kiểm tra lại";
-	    }
-	} catch (SQLException ex) {
+            try {
+                while (dt.next())
+                {
+                    if (dt.getString("TENDANGNHAP").trim().equals(tendn))
+                        return "Lỗi: Đã có người sử dụng tên đăng nhập này, vui lòng chọn tên đăng nhập khác";
+                    if (dt.getString("CMND").trim().equals(cmnd))
+                        return "Lỗi: Đã có người sử dụng số CMND này, vui lòng kiểm tra lại";
+                }
+            } 
+            catch (SQLException ex) {
 	    Logger.getLogger(BO_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
-	}
+            }
             return MAPPER_KHACHHANG.InsertKH(makh, tenkh, tendn, matkhau, diachi, sodt, cmnd, "0")==1?"Đã tạo thành công tài khoản":"Lỗi: Không thể tạo tài khoản";
-        }
+            }
 }
