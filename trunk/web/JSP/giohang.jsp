@@ -8,13 +8,7 @@
 <%@page import="DTO.GioHang"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
-    if (session.getAttribute("GioHang")==null)
-	{
-	    GioHang gh=new GioHang();
-	    session.setAttribute("GioHang", gh);
-	}
-%>
+
 <!-- Định dạng tiền -->
 <%
     NumberFormat nf = new DecimalFormat("###,###,##0");

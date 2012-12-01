@@ -35,7 +35,7 @@
           </div>
           <div style="float: right; display: inline-block; width: 49%;"><b style="margin-bottom: 2px; display: block;">Nếu bạn là khách cũ</b>
             <div style="background: #F7F7F7; border: 1px solid #DDDDDD; padding: 10px; min-height: 210px;">
-                <form name="login" action="Login.do">
+                <form name="login" action="Login.do" id="login" method="POST">
                 Tôi là khách hàng cũ của shop<br />
                 <br />
                 <b>Tên đăng nhập</b><br />
@@ -43,7 +43,7 @@
                 <br />
                 <b>Mật khẩu</b><br />
                 <input type="password" name="txtPassword" /><br /><label><%=session.getAttribute("errorMK").toString()%></label>
-                <div style="text-align: right;"><a class="button"><span>Đăng nhập</span></a></div>
+                <div style="text-align: right;"><a class="button" onclick="$('#login').submit();"><span>Đăng nhập</span></a></div>
 		<input type="hidden" name="method" value="login"/>
                 </form>
             </div>

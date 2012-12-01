@@ -15,15 +15,18 @@
     </global-exceptions>
 
     <global-forwards>
+	<forward name="home" path="siteMaster"/>
         <forward name="welcome"  path="/Welcome.do"/>
+	<forward name="giohang" path="giohang"/>
+	<forward name="login" path="login"/>
     </global-forwards>
 
     <action-mappings>
 	<action path="/GioHang" type="Action.GioHang" parameter="method">
-	    <forward name="giohang" path="giohang"/>
+	    
 	</action>
 	<action path="/Login" type="Action.Login">
-	    <forward name="login" path="login"/>
+	    
 	</action>
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
     </action-mappings>
