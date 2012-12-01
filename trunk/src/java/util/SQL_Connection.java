@@ -32,7 +32,7 @@ public class SQL_Connection {
         }
         catch(Exception ex)
         {
-            ex.printStackTrace();
+            //ex.printStackTrace();
             return null;
         }
     }
