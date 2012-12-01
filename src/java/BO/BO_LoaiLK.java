@@ -40,8 +40,12 @@ public class BO_LoaiLK {
         }
         catch(SQLException ex)
         {
-            Logger.getLogger(BO_LoaiLK.class.getName());
+            Logger.getLogger(BO_LoaiLK.class.getName()).log(Level.SEVERE, null,ex);
         }
-        return MAPPER_LOAILK.InsertLoaiLK(maloailk, tenloailk)==?"Đã thêm thành công loại linh kiện":"Lỗi Không thể tạo loại linh kiện";
+        return MAPPER_LOAILK.InsertLoaiLK(maloailk, tenloailk)==1?"Đã thêm thành công loại linh kiện":"Lỗi Không thể tạo loại linh kiện";
         }
+    public static String UpdateLoaiLK(String maloailk,String tenloailk)
+    {
+        return MAPPER_LOAILK.UpdateLoaiLK(maloailk, tenloailk)==1?"Sửa thành công":"Sửa thất bại";
+    }
 }
