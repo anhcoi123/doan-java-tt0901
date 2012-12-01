@@ -4,10 +4,11 @@
  */
 package MAPPER;
 
+import util.SQL_Connection;
 /**
  *
  * @author Lucifer
  */
-public class MAPPERDB {
+public class MAPPERDB extends SQL_Connection{
     
 }

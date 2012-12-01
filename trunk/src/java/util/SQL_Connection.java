@@ -24,7 +24,7 @@ public class SQL_Connection {
 	    * 
 	    */
 	    Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
-	    Connection connect=DriverManager.getConnection("jdbc:jtds:sqlserver://localhost;databaseName=javatuan3;instance=SQLExpress");
+	    Connection connect=DriverManager.getConnection("jdbc:jtds:sqlserver://localhost;databaseName=QLBANHANG;instance=SQLExpress");
 	    //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 	    //Connection connect=DriverManager.getConnection("jdbc:sqlserver://localhost\\SQLExpress;databaseName=javatuan3;integratedSecurity=true;");
 	    return connect;
