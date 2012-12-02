@@ -13,6 +13,16 @@
 <%
     NumberFormat nf = new DecimalFormat("###,###,##0");
 %>
+<div class="top">
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="center">
+               <h1>
+		   Giỏ hàng
+                </h1>
+            </div>
+</div>
+<div class="middle">
 <div id="Giohang">
     <% if (request.getParameter("MALK") == null && request.getParameter("Update") == null)
        {%>
@@ -102,11 +112,12 @@
                         <a class="button" href="./"><span>Tiếp tục mua hàng</span></a>
                     </td>
                     <td align="right">
-                        <a class="button" href="./ThanhToan.aspx"><span>Thanh toán</span></a>
+                        <a class="button" href="./ThanhToan.do"><span>Thanh toán</span></a>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
     <%} %>
+</div>
 </div>

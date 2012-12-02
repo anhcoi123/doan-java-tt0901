@@ -13,11 +13,11 @@
 <script type="text/javascript" language="javascript">
     function xoaLK(malk) {
         var request = $.ajax({
-            url: "giohang.aspx",
+            url: "GioHang.do",
             type: "POST",
-            data: { MALK: malk, SoLuong: '0',method: 'delete' },
+            data: { MALK: malk, SoLuong: '1',method: 'delete' },
             success: function (response, textStatus, jqXHR) {
-                $("#column_right").load("columnRight.aspx");
+                $("#column_right").load("./JSP/columnRight.jsp");
             }
         });
     }
@@ -63,7 +63,7 @@
             <div class="top"><img src="./image/basket.png" alt="" />Giỏ hàng</div>
             <div class="middle">
                 <%
-                if (session.getAttribute("GioHang")!=null)
+                if (session.getAttribute("GioHang")!=null && ((DTO.GioHang)session.getAttribute("GioHang")).getThanhTien()!=0)
                 {%>
                 <table cellspacing="0" cellpadding="2" style="width: 100%;">
 		    <%      for (int i=0;i<((DTO.GioHang)session.getAttribute("GioHang")).getLinhKien().size();i++)
@@ -102,7 +102,7 @@
 
                         </table>
                         <div style="padding-top:5px;text-align:center;clear:both;">
-                            <a href="./giohang.do">Giỏ</a>&nbsp;|&nbsp;<a href="./thanhtoan.do">Thanh toán</a>
+                            <a href="./GioHang.do">Giỏ</a>&nbsp;|&nbsp;<a href="./ThanhToan.do">Thanh toán</a>
                         </div>
                 <% }else{%>
                     Giỏ hàng rỗng

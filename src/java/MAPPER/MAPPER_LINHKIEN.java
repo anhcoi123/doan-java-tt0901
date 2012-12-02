@@ -56,10 +56,10 @@ public class MAPPER_LINHKIEN {
 
         public static DTO.LinhKien searchLK(String id) throws SQLException
         {
-            String[] paraName = new String[] { "@MaLK" };
-            String[] paraValue = new String[] { id };
+            String sqlTimKiemMaLK = "EXECUTE SP_TIMLK_MALK '"+id+"'";
             ResultSet dtLK = MAPPERDB.getResultSet(sqlTimKiemMaLK);
             DTO.LinhKien lk = new DTO.LinhKien();
+	    dtLK.next();
             lk.setDonGia(dtLK.getInt("DONGIA"));
             lk.setdVTinh (dtLK.getString("DVTinh"));
             lk.setHinhAnh (dtLK.getString("HINHANH"));

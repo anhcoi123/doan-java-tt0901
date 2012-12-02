@@ -1,11 +1,11 @@
-﻿function updateGH() {
-    $("#column_right").load("columnRight.aspx");
+function updateGH() {
+    $("#column_right").load("./JSP/columnRight.jsp");
     ScrollCart();
 }
 
 function themVaoGH(a,b) {
     var request = $.ajax({
-        url: "giohang.aspx",
+        url: "GioHang.do",
         type: "POST",
         data: { MALK: a, SoLuong: b, method: 'add' },
         success: function (response, textStatus, jqXHR) {

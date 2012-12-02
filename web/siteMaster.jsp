@@ -4,6 +4,8 @@
     Author     : Lucifer
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.text.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -85,18 +87,8 @@ function () {
         <div class="ErrorMes"></div>
 
         <!-- Phần nội dung chính -->
-        <div class="top">
-            <div class="left"></div>
-            <div class="right"></div>
-            <div class="center">
-               <h1>
-		   <tiles:getAsString name="headerTitle" />
-                </h1>
-            </div>
-        </div>
-        <div class="middle">
-	    <tiles:insert attribute="body" ignore="true" />
-        </div>
+        
+	<tiles:insert attribute="body" ignore="true" />
         <div class="bottom">
             <div class="left"></div>
             <div class="right"></div>
@@ -111,15 +103,30 @@ function () {
         </div>
         <div class="middle">
             <div id="SP" align="center">
-		<a class="button_add_small" onclick="themVaoGH('M004')" title="Thêm vào giỏ hàng">  Thêm</a>
-<!--                <asp:DataList ID="load" runat="server" RepeatDirection="Vertical" RepeatColumns="4" CssClass="list">
-                    <ItemTemplate>
-                        <table style="vertical-align:bottom; text-align:center;">
-                            </td></tr>
-                        </table>
-                    </ItemTemplate>
-                </asp:DataList>-->
-            </div>
+		<table class="list">
+		<%
+		ResultSet rs=BO.BO_LINHKIEN.DTGet8();
+		try
+		{
+		    while(rs!=null && !rs.isAfterLast())
+		    {
+			%>
+			<tr>
+			<%
+			for (int i=0; i<4 && rs.next();i++)
+			{%>
+			    <td width="25%"><a href="product.do?id=<%=rs.getString("MALK") %>"><div class="example" style="width:150px; height:150px; overflow:visible"><img id="img<%=rs.getString("MALK") %>" src="<%=rs.getString("HINHANH") %>" class="imgzoom" style=" margin-left:15px;margin-top:15px; position:relative;float:left; width:120px; height:120px; cursor:pointer;overflow:visible;"/></div></a><br />
+				    <a href="product.do?id=<%=rs.getString("MALK") %>"><%=rs.getString("TENLK") %></a><br />
+				    <span style="color: #900; font-weight: bold;"><%=nf.format(rs.getInt("DONGIA"))%>,000 VNĐ</span><br />
+				    <a class="button_add_small" title="Thêm vào giỏ hàng" onclick="themVaoGH('<%=rs.getString("MALK") %>','1')">&nbsp;&nbsp;Thêm</a></td>
+			    <%
+			}
+			%></tr><%
+		    }
+		}catch(Exception ex){}
+		%>
+		</table>
+	    </div>
         </div>
         <div class="bottom">
             <div class="left"></div>
