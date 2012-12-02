@@ -8,6 +8,7 @@ package BO;
 import MAPPER.MAPPER_NHASX;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -51,4 +52,47 @@ public class BO_NhaSX {
             return MAPPER_NHASX.UpdateNSX(mansx, tennsx);
         }
         
+        public static ArrayList<DTO.NhaSX> DanhSachNSX() throws SQLException
+        {
+            ResultSet tb = MAPPER_NHASX.DTDanhSachNSX();
+            ArrayList<DTO.NhaSX> DB = new ArrayList<DTO.NhaSX>();
+            while(tb!=null && tb.next())
+	    {
+		DTO.NhaSX a= new DTO.NhaSX();
+                a.setMaNSX(tb.getString("MANSX"));
+                a.setTenNSX(tb.getString("TENNHASX"));
+		DB.add(a);
+            }
+            return DB;
+        }
+
+        public static ResultSet DTDanhSachNSX()
+        {
+            return MAPPER_NHASX.DTDanhSachNSX();
+        }
+
+        public static DTO.NhaSX NhaSX(String mansx) throws SQLException
+        {
+            DTO.NhaSX nsx = new DTO.NhaSX();
+            ResultSet dt = MAPPER_NHASX.TimNhaSX_MaNSX(mansx);
+            if (dt!=null && dt.next())
+            {
+                nsx.setMaNSX(dt.getString("MaNSX"));
+                nsx.setTenNSX(dt.getString("TenNSX"));
+            }
+            return nsx;
+        }
+
+        public static String TenNhaSX(String mansx) throws SQLException
+        {
+            DTO.NhaSX nsx = new DTO.NhaSX();
+            ResultSet dt = MAPPER_NHASX.TimNhaSX_MaNSX(mansx);
+            if (dt!=null && dt.next())
+            {
+                nsx.setTenNSX(dt.getString("TenNSX"));
+                return nsx.getTenNSX();
+            }
+            return "Không tìm thấy nhà sản xuất";
+        }	
+	
 }
