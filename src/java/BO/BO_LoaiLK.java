@@ -48,4 +48,23 @@ public class BO_LoaiLK {
     {
         return MAPPER_LOAILK.UpdateLoaiLK(maloailk, tenloailk)==1?"Sửa thành công":"Sửa thất bại";
     }
+    
+    public static ResultSet DTTatCaLoaiLK()
+    {
+	return MAPPER.MAPPER_LOAILK.DTDanhSachLoaiLK();
+    }
+
+    public static String TenLoaiLK_MALOAILK(String MaLoaiLK)
+    {
+	try
+	{
+	    return MAPPER.MAPPER_LOAILK.TenLoaiLK_MALOAILK(MaLoaiLK);
+	}catch(Exception ex){return "Không tìm thấy loại linh kiện";}
+    }
+
+    public static ResultSet DTSearchKeyWord(String maloailk, String keyword)
+    {
+	return MAPPER.MAPPER_LOAILK.DTSearchKeyword(maloailk, keyword);
+    }
+    
 }

@@ -15,6 +15,9 @@ public class MAPPER_LOAILK {
     private static String sqlUpdateLoaiLK="UPDATE LOAILK SET TENLOAILK=@TENLOAILK WHERE MALOAILK=@MALOAILK";
     private static String sqlInsertLoaiLK="EXEC SP_THEMLOAILK @MALOAILK,@TENLOAILK";
     private static String sqlDanhSachLoaiLK="SELECT * FROM LOAILK";
+    private static String sqlSearchLoaiLK_Keyword = "SELECT * FROM LINHKIEN WHERE MALOAILK LIKE @MALOAILK AND ((TENLK LIKE '%' + @KEYWORD + '%') OR (THONGTIN LIKE '%' + @KEYWORD + '%'))";
+    private static String sqlTenLoaiLK = "EXEC SP_TATCALOAILK_TENLOAILK @MALOAILK";
+    
     public static ResultSet DTDanhSachLoaiLK()
     {
         return MAPPERDB.getResultSet(sqlLoaiLK);
@@ -57,4 +60,25 @@ public class MAPPER_LOAILK {
         llk.setTenLoaiLK(dtLLK.getString("TENLOAILK"));
         return llk;
     }
+    
+    public static String TenLoaiLK_MALOAILK(String MaLoaiLK) throws SQLException
+    {
+	String sqlTenLoaiLK = "EXEC SP_TATCALOAILK_TENLOAILK '"+MaLoaiLK+"'";
+	ResultSet dtLK = MAPPERDB.getResultSet(sqlTenLoaiLK);
+	
+	if (dtLK==null)
+	    return "Không tìm thấy loại linh kiện";
+	else
+	{
+	    dtLK.next();
+	    return dtLK.getString("TENLOAILK");
+	}
+    }
+    
+    public static ResultSet DTSearchKeyword(String MaLoaiLK,String keyword)
+    {
+	String sqlSearchLoaiLK_Keyword = "SELECT * FROM LINHKIEN WHERE MALOAILK LIKE '"+MaLoaiLK+"' AND ((TENLK LIKE '%' + '"+keyword+"' + '%') OR (THONGTIN LIKE '%' + '"+keyword+"' + '%'))";
+	return MAPPERDB.getResultSet(sqlSearchLoaiLK_Keyword);
+    }
+    
 }
