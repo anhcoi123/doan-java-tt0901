@@ -27,13 +27,11 @@ public class MAPPER_LOAILK {
         ResultSet rs= MAPPERDB.getResultSet(sqlDanhSachLoaiLK);
         int totalRow=0;
         try
-        {
-            
-            rs.last();
-            totalRow=rs.getRow();
-        }
-        catch(Exception ex)
-        {}
+	{
+	    while(rs.next())
+	    {totalRow++;}
+	}catch(Exception ex){
+	}
         return totalRow;
     }
     public static int InsertLoaiLK(String maloailk,String tenloailk)
@@ -77,7 +75,13 @@ public class MAPPER_LOAILK {
     
     public static ResultSet DTSearchKeyword(String MaLoaiLK,String keyword)
     {
-	String sqlSearchLoaiLK_Keyword = "SELECT * FROM LINHKIEN WHERE MALOAILK LIKE '"+MaLoaiLK+"' AND ((TENLK LIKE '%' + '"+keyword+"' + '%') OR (THONGTIN LIKE '%' + '"+keyword+"' + '%'))";
+	String sqlSearchLoaiLK_Keyword = "SELECT * FROM LINHKIEN WHERE MALOAILK LIKE '"+MaLoaiLK+"' AND ((TENLK LIKE '%"+keyword+"%') OR (THONGTIN LIKE '%"+keyword+"%'))";
+	return MAPPERDB.getResultSet(sqlSearchLoaiLK_Keyword);
+    }
+    
+    public static ResultSet DTSearchKeywordSort(String MaLoaiLK,String keyword, String sort)
+    {
+	String sqlSearchLoaiLK_Keyword = "SELECT * FROM LINHKIEN WHERE MALOAILK LIKE '"+MaLoaiLK+"' AND ((TENLK LIKE '%"+keyword+"%') OR (THONGTIN LIKE '%"+keyword+"%')) ORDER BY "+sort;
 	return MAPPERDB.getResultSet(sqlSearchLoaiLK_Keyword);
     }
     

@@ -26,12 +26,11 @@ public class MAPPER_NHACC {
         ResultSet rs= MAPPERDB.getResultSet(sqlDanhSachNCC);
         int totalRow=0;
         try
-        {
-            rs.last();
-            totalRow=rs.getRow();
-        }
-        catch(Exception ex)
-        {}
+	{
+	    while(rs.next())
+	    {totalRow++;}
+	}catch(Exception ex){
+	}
         return totalRow;
     }
     public static int InsertNCC(String mancc,String tenncc,String diachi,String sodt)

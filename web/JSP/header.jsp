@@ -3,6 +3,7 @@
     Created on : Nov 26, 2012, 1:48:47 PM
     Author     : Lucifer
 --%>
+<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -65,12 +66,17 @@
         <div id="search">
           <div class="div8">Tìm kiếm</div>
           <div class="div9">
-          <form name="timkiem" method="post" action="category.aspx">
+          <form name="timkiem" method="post" action="Category.do">
             <input type="text" value="Từ khóa" id="filter_keyword" onclick="this.value = '';" onkeydown="this.style.color = '#000000'" style="color: #999;" />
             <select id="filter_category_id">
               <option value="0">Tất cả loại sản phẩm</option>
-                
-              
+	      
+             <%ResultSet LoaiLKS = BO.BO_LoaiLK.DTTatCaLoaiLK();
+		while(LoaiLKS!=null && LoaiLKS.next())
+	    {%>
+	    <option value="<%=LoaiLKS.getString("MALOAILK")%>"><%=LoaiLKS.getString("TENLOAILK") %></option>
+	    <%}%>
+	    
             </select>
             </form>
           </div>
@@ -87,7 +93,7 @@
     </div>
     <script type="text/javascript" language="javascript">
         function moduleSearch() {
-            url = 'category.aspx?';
+            url = 'Category.do?';
             var filter_keyword = $('#filter_keyword').attr('value')
             if (filter_keyword) {
                 url += '&keyword=' + encodeURIComponent(filter_keyword);

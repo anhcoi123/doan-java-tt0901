@@ -7,13 +7,15 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.*"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title><tiles:getAsString name="title" ignore="true"/>
     </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link href="Styles/stylesheet.css" rel="stylesheet" type="text/css" />
 <!-- Định dạng tiền -->
 <%

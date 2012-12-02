@@ -54,5 +54,19 @@
 	<put name="title" value="Anh Khoa SHOP - Đăng nhập" />
 	<put name="body" value="/JSP/login.jsp" />
     </definition>
+    <definition name="register" extends="siteMaster">
+	<put name="title" value="Anh Khoa SHOP - Đăng nhập" />
+	<put name="body" value="/JSP/register.jsp" />
+    </definition>
+    
+    <definition name="category" extends="siteMaster">
+	<put name="title" value="Anh Khoa SHOP - Loại linh kiện" />
+	<put name="body" value="/JSP/category.jsp" />
+    </definition>
+    
+    <definition name="manufacturer" extends="siteMaster">
+	<put name="title" value="Anh Khoa SHOP - Nhà sản xuất" />
+	<put name="body" value="/JSP/manufacturer.jsp" />
+    </definition>
     
 </tiles-definitions>
