@@ -35,6 +35,11 @@ public class MAPPER_LINHKIEN {
             return MAPPERDB.getResultSet(sqlTimKiemMaLoaiLK);
         }
         
+	public static ResultSet DTTatCaLK_MaLoaiLKSort(String maloailk,String sort)
+        {
+	    String sqlTimKiemMaLoaiLK = "SELECT * FROM LINHKIEN WHERE MALOAILK='"+maloailk+"' ORDER BY "+sort;
+            return MAPPERDB.getResultSet(sqlTimKiemMaLoaiLK);
+        }
 
         public static ResultSet Get8Products()
         {
@@ -105,4 +110,11 @@ public class MAPPER_LINHKIEN {
             String sqlSearch="EXECUTE SP_TIMLK_NHASX '"+tennsx+"'";
             return MAPPERDB.getResultSet(sqlSearch);
         }
+	
+	public static ResultSet TimLK_TenNSXSort(String tennsx,String sort)
+        {
+            String sqlSearch="SELECT * FROM LINHKIEN inner join NHASX on LINHKIEN.MANSX= NHASX.MANSX WHERE TENNSX LIKE '%"+tennsx+"%' ORDER BY "+sort;
+            return MAPPERDB.getResultSet(sqlSearch);
+        }
+	
 }

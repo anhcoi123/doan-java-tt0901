@@ -63,8 +63,8 @@
                  for(int i=0; i<gh.getLinhKien().size();i++)
                  {%>
                 <tr>
-                    <td><img src="<%= gh.getLinhKien().get(i).getHinhAnh() %>" style="width:75px; height:75px"/></td>
-                    <td><%=gh.getLinhKien().get(i).getTenLK() %></td>
+                    <td><a href="./Product.do?id=<%=gh.getLinhKien().get(i).getMaLK()%>"><img src="<%= gh.getLinhKien().get(i).getHinhAnh() %>" style="width:75px; height:75px"/></a></td>
+                    <td><a href="./Product.do?id=<%=gh.getLinhKien().get(i).getMaLK()%>"><%=gh.getLinhKien().get(i).getTenLK() %></a></td>
                     <td align="right"><input type="text" id="soLuong<%=gh.getLinhKien().get(i).getMaLK()%>" value="<%=gh.getLinhKien().get(i).getSoLuong()%>"  onchange="capNhat('<%=gh.getLinhKien().get(i).getMaLK() %>')" style="text-align:right"/></td>
                     <td align="right"><label id="donGiaLK<%=gh.getLinhKien().get(i).getMaLK() %>"><%=nf.format(gh.getLinhKien().get(i).getDonGia())%></label></td>
                     <td align="right"><label id="thanhTienLK<%=gh.getLinhKien().get(i).getMaLK() %>"><%=nf.format(gh.getLinhKien().get(i).getDonGia() * gh.getLinhKien().get(i).getSoLuong())%></label></td>

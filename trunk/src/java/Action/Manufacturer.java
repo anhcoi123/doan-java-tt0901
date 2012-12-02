@@ -16,7 +16,7 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author Lucifer
  */
-public class Category extends org.apache.struts.action.Action {
+public class Manufacturer extends org.apache.struts.action.Action {
 
     /*
      * forward name="success" path=""
@@ -37,7 +37,7 @@ public class Category extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
 	    HttpServletRequest request, HttpServletResponse response)
 	    throws Exception {
-	String maloailk="";
+	String mansx="";
 	String title="";
 	String sort="";
 	String txtNoData="";
@@ -48,45 +48,25 @@ public class Category extends org.apache.struts.action.Action {
 	    sort=request.getParameter("sortList");
 	
 	// nếu có mã loại lk
-	if (request.getParameter("maloailk")!=null)
-            maloailk=request.getParameter("maloailk");
-	session.setAttribute("maloailk", maloailk);
-	// nếu có keyword tìm kiếm
-        if (request.getParameter("keyword") != null && (!request.getParameter("keyword").equals("null") && !request.getParameter("keyword").equals("")))
-        {
-            if (maloailk.equals("0"))
-                maloailk = "%";
-            title = "Tìm kiếm";
-            String keyword = request.getParameter("keyword");
-	    session.setAttribute("keyword", keyword);
+	if (request.getParameter("mansx")!=null)
+            mansx=request.getParameter("mansx");
+	session.setAttribute("mansx", mansx);
+	title = BO.BO_NhaSX.TenNhaSX(mansx);
+	if (title.equals("Không tìm thấy nhà sản xuất"))
+	    txtNoData="Không tìm thấy nhà sản xuất";
+	else
+	{
 	    session.setAttribute("title", title);
 	    if (sort.equals(""))
-		dt = BO.BO_LoaiLK.DTSearchKeyWord(maloailk, keyword);
+		dt = BO.BO_LINHKIEN.SearchLK_TENNSX(title);
 	    else
-		dt = BO.BO_LoaiLK.DTSearchKeyWordSort(maloailk, keyword ,sort);
-	    session.setAttribute("category", dt);
+		dt=BO.BO_LINHKIEN.SearchLK_TENNSXSort(title,sort);
+	    session.setAttribute("manufacturer", dt);
 	    if (dt==null || !dt.next())
-		txtNoData="Không tìm được sản phẩm nào có từ khóa như bạn nhập!";
-		
-        }
-        else
-        {
-            title = BO.BO_LoaiLK.TenLoaiLK_MALOAILK(maloailk);
-            if (title.equals("Không tìm thấy loại linh kiện"))
-                txtNoData="Không tìm thấy loại linh kiện";
-            else
-            {
-		session.setAttribute("title", title);
-		if (sort.equals(""))
-		    dt = BO.BO_LINHKIEN.DTTatCaLK_MaLoaiLK(maloailk);
-		else
-		    dt=BO.BO_LINHKIEN.DTTatCaLK_MaLoaiLKSort(maloailk,sort);
-                session.setAttribute("category", dt);
-                if (dt==null || !dt.next())
-                    txtNoData="Không có sản phẩm nào thuộc loại này!";
-            }
-        }
+		txtNoData="Không có sản phẩm nào của nhà sản xuất này!";
+	}
+
 	session.setAttribute("txtNoData",txtNoData);
-	return mapping.findForward("category");
+	return mapping.findForward("manufacturer");
     }
 }

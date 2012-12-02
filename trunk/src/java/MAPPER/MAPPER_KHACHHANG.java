@@ -30,8 +30,8 @@ public class MAPPER_KHACHHANG {
 	int totalRow=0;
 	try
 	{
-	    rs.last();
-	    totalRow=rs.getRow();
+	    while(rs.next())
+	    {totalRow++;}
 	}catch(Exception ex){
 	}
 	return totalRow;

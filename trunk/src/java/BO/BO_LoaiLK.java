@@ -67,4 +67,8 @@ public class BO_LoaiLK {
 	return MAPPER.MAPPER_LOAILK.DTSearchKeyword(maloailk, keyword);
     }
     
+    public static ResultSet DTSearchKeyWordSort(String maloailk, String keyword,String sort)
+    {
+	return MAPPER.MAPPER_LOAILK.DTSearchKeywordSort(maloailk, keyword, sort);
+    }
 }

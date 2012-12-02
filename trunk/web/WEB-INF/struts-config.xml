@@ -19,6 +19,9 @@
         <forward name="welcome"  path="/Welcome.do"/>
 	<forward name="giohang" path="giohang"/>
 	<forward name="login" path="login"/>
+	<forward name="register" path="register"/>
+	<forward name="category" path="category"/>
+	<forward name="manufacturer" path="manufacturer"/>
     </global-forwards>
 
     <action-mappings>
@@ -28,11 +31,13 @@
 	<action path="/Login" type="Action.Login">
 	    
 	</action>
+	<action path="/Register" type="Action.Register"/>
+	<action path="/Manufacturer" type="Action.Manufacturer"/>
 	<action path="/Category" type="Action.Category"/>
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
     </action-mappings>
     
-    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor" contentType="text/html; charset=UTF-8"/>
 
     <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
     

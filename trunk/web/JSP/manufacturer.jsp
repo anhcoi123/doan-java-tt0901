@@ -1,6 +1,6 @@
-<%--
-    Document   : category
-    Created on : Dec 2, 2012, 2:49:23 PM
+<%-- 
+    Document   : manufacturer
+    Created on : Dec 2, 2012, 9:47:04 PM
     Author     : Lucifer
 --%>
 
@@ -23,7 +23,7 @@
     <div class="middle">
         <div class="sort">
             <div class="div1">
-		<form id="formSort" action="Category.do" method="GET">
+		<form id="formSort" action="Manufacturer.do" method="GET">
 		    <select name="sortList" ID="sortList" onchange="$('#formSort').submit()">
 			<option selected="true" value="default">Mặc định</option>
 			<option value="TENLK ASC">Theo tên A-Z</option>
@@ -31,8 +31,7 @@
 			<option value="DONGIA ASC">Theo giá Thấp-Cao</option>
 			<option value="DONGIA DESC">Theo tên Cao-Thấp</option>
 		    </select>
-		    <input type="hidden" value="<%=session.getAttribute("maloailk") %>" name="maloailk"/>
-		    <input type="hidden" value="<%=session.getAttribute("keyword") %>" name="keyword"/>
+		    <input type="hidden" value="<%=session.getAttribute("mansx") %>" name="mansx"/>
                 </form>
             </div>
             <div class="div2">Sắp xếp theo: </div>
@@ -42,7 +41,7 @@
 		<%
 		try
 		{
-		    ResultSet rs=(ResultSet)session.getAttribute("category");
+		    ResultSet rs=(ResultSet)session.getAttribute("manufacturer");
 		    while(rs!=null && !rs.isAfterLast())
 		    {
 			%>

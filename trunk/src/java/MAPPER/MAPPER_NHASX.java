@@ -27,13 +27,11 @@ public class MAPPER_NHASX {
         ResultSet rs=MAPPERDB.getResultSet(sqlDanhSachNSX);
         int totalRow=0;
         try
-        {
-            rs.last();;
-            totalRow=rs.getRow();
-        }
-        catch(Exception ex)
-        {
-        }
+	{
+	    while(rs.next())
+	    {totalRow++;}
+	}catch(Exception ex){
+	}
         return totalRow;
     }
     public static ResultSet DTTatCaNhaSX()

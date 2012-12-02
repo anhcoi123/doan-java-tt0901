@@ -93,8 +93,19 @@ public static ResultSet DTGetAll()
             return MAPPER.MAPPER_LINHKIEN.TimLK_TenNSX(tennsx);
         }
 
+	public static ResultSet SearchLK_TENNSXSort(String tennsx,String sort)
+        {
+            return MAPPER.MAPPER_LINHKIEN.TimLK_TenNSXSort(tennsx,sort);
+        }
+	
         public static ResultSet DTTatCaLK_MaLoaiLK(String maloailk)
         {
             return MAPPER.MAPPER_LINHKIEN.DTTatCaLK_MaLoaiLK(maloailk);
         }
+	
+	public static ResultSet DTTatCaLK_MaLoaiLKSort(String maloailk,String sort)
+        {
+            return MAPPER.MAPPER_LINHKIEN.DTTatCaLK_MaLoaiLKSort(maloailk,sort);
+        }
+	
 }
