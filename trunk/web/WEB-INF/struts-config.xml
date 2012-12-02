@@ -28,6 +28,7 @@
 	<action path="/Login" type="Action.Login">
 	    
 	</action>
+	<action path="/Category" type="Action.Category"/>
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
     </action-mappings>
     
