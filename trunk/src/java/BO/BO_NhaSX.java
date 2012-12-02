@@ -42,7 +42,7 @@ public class BO_NhaSX {
                 }
             } 
             catch (SQLException ex) {
-	    Logger.getLogger(BO_KhachHang.class.getName()).log(Level.SEVERE, null, ex);
+	    Logger.getLogger(BO_NhaSX.class.getName()).log(Level.SEVERE, null, ex);
             }
             return MAPPER_NHASX.InsertNSX(mansx, tennsx)==1?"Đã tạo thành công nhà sản xuất":"Lỗi: Không thể tạo nhà sản xuất";
         }

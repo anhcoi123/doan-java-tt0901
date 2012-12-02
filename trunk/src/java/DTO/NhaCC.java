@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 package DTO;
-import com.sun.faces.facelets.tag.jstl.core.ForEachHandler;
 
 /**
  *

@@ -26,6 +26,8 @@ public class LinhKien
         private String _hinhAnh;
 
 	private String _mansx;
+	
+	private String _maloailk;
     /**
      * @return the _maLK
      */
@@ -136,6 +138,20 @@ public class LinhKien
      */
     public void setMansx(String mansx) {
 	this._mansx = mansx;
+    }
+
+    /**
+     * @return the _maloailk
+     */
+    public String getMaloailk() {
+	return _maloailk;
+    }
+
+    /**
+     * @param maloailk the _maloailk to set
+     */
+    public void setMaloailk(String maloailk) {
+	this._maloailk = maloailk;
     }
 
     }

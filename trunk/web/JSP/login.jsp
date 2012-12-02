@@ -6,6 +6,16 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<div class="top">
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="center">
+               <h1>
+		   <tiles:getAsString name="headerTitle" />
+                </h1>
+            </div>
+        </div>
+<div class="middle">
 <% if (request.getParameter("logout") != null)
      { %>
      Bạn đã đăng xuất khỏi hệ thống thành công!
@@ -50,6 +60,7 @@
           </div>
         </div>
         <%} %>
+</div>
 <script type="text/javascript"><!--
     $('#login input').keydown(function (e) {
         if (e.keyCode == 13) {

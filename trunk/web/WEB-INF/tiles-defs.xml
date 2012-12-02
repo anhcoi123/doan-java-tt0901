@@ -40,7 +40,6 @@
     </definition>
     <definition name="siteMaster" path="/siteMaster.jsp">
         <put name="title" value="Anh Khoa SHOP - Trang Chủ" />
-	<put name="headerTitle" value="Chào mừng bạn đến với shop linh kiện Anh Khoa" />
         <put name="header" value="/JSP/header.jsp" />
         <put name="columnLeft" value="/JSP/columnLeft.jsp" />
 	<put name="columnRight" value="/JSP/columnRight.jsp" />
@@ -49,12 +48,10 @@
     </definition>
     <definition name="giohang" extends="siteMaster">
 	<put name="title" value="Anh Khoa SHOP - Giỏ hàng" />
-	<put name="headerTitle" value="Giỏ hàng" />
 	<put name="body" value="/JSP/giohang.jsp" />
     </definition>
     <definition name="login" extends="siteMaster">
 	<put name="title" value="Anh Khoa SHOP - Đăng nhập" />
-	<put name="headerTitle" value="Đăng nhập" />
 	<put name="body" value="/JSP/login.jsp" />
     </definition>
     

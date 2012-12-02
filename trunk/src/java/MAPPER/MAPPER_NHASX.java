@@ -52,15 +52,15 @@ public class MAPPER_NHASX {
     }
     public static ResultSet TimNhaSX_MaNSX(String mansx)
     {
-        String sql="EXEC SP_NHASX_MANSX '"+mansx+"'";
+        String sql="SELECT * FROM NHASX WHERE MANSX='"+mansx+"'";
         return MAPPERDB.getResultSet(sql);
     }
-    public static DTO.NhaSX searchNSX(String id) throws SQLException
+    public static DTO.NhaSX searchNSX(String mansx) throws SQLException
     {
-        String[] paraName= new String[]{"MANSX"};
-        String[] paraValue= new String[] {id};
+	String sqlSearchNhaSX_MaNSX="SELECT * FROM NHASX WHERE MANSX='"+mansx+"'";
         ResultSet dtNSX= MAPPERDB.getResultSet(sqlSearchNhaSX_MaNSX);
         DTO.NhaSX nsx=new DTO.NhaSX();
+	nsx.setMaNSX(dtNSX.getString("MANSX"));
         nsx.setTenNSX(dtNSX.getString("TENNSX"));
         return nsx;
     }
