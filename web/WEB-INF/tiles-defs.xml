@@ -38,6 +38,32 @@
 
     <definition name="${YOUR_DEFINITION_HERE}">
     </definition>
+    
+    <definition name="AdminMaster" path="/JSP/Admin/AdminMaster.jsp">
+        <put name="title" value="Admin Shop LINH KIỆN" />
+	<put name="adminMenu" value="/JSP/Admin/adminMenu.jsp"/>
+        <put name="body" value="/JSP/Admin/login.jsp" />
+    </definition>
+
+    <definition name="adminDonDH" extends="AdminMaster">
+        <put name="title" value="Admin Shop LINH KIỆN - Đơn ĐH" />
+	<put name="adminMenu" value="/JSP/Admin/adminMenu.jsp"/>
+        <put name="body" value="/JSP/Admin/adminDonDH.jsp" />
+    </definition>
+    
+    <definition name="adminSuaDonDH" extends="AdminMaster">
+        <put name="title" value="Admin Shop LINH KIỆN" />
+	<put name="adminMenu" value="/JSP/Admin/adminMenu.jsp"/>
+        <put name="body" value="/JSP/Admin/adminSuaDonDH.jsp" />
+    </definition>
+    
+    <definition name="adminpage" extends="AdminMaster">
+        <put name="title" value="Admin Shop LINH KIỆN" />
+	<put name="adminMenu" value="/JSP/Admin/adminMenu.jsp"/>
+        <put name="body" value="/JSP/Admin/adminpage.jsp" />
+    </definition>
+    
+    
     <definition name="siteMaster" path="/siteMaster.jsp">
         <put name="title" value="Anh Khoa SHOP - Trang Chủ" />
         <put name="header" value="/JSP/header.jsp" />
@@ -59,6 +85,11 @@
 	<put name="body" value="/JSP/register.jsp" />
     </definition>
     
+    <definition name="product" extends="siteMaster">
+	<put name="title" value="Anh Khoa SHOP - Chi tiết" />
+	<put name="body" value="/JSP/product.jsp" />
+    </definition>
+    
     <definition name="category" extends="siteMaster">
 	<put name="title" value="Anh Khoa SHOP - Loại linh kiện" />
 	<put name="body" value="/JSP/category.jsp" />
@@ -67,6 +98,11 @@
     <definition name="manufacturer" extends="siteMaster">
 	<put name="title" value="Anh Khoa SHOP - Nhà sản xuất" />
 	<put name="body" value="/JSP/manufacturer.jsp" />
+    </definition>
+    
+    <definition name="thanhtoan" extends="siteMaster">
+	<put name="title" value="Anh Khoa SHOP - Thanh toán" />
+	<put name="body" value="/JSP/thanhtoan.jsp" />
     </definition>
     
 </tiles-definitions>
