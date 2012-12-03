@@ -14,12 +14,12 @@
 	<th>Tình trạng</th>
     </tr>
     <tr>
-	<td><%=session.getAttribute("MADH")%> </td>
-	<td><%=session.getAttribute("MAKH")%> </td>
-	<td><%=session.getAttribute("NGAYDH")%> </td>
-	<td><%=session.getAttribute("THANHTIEN")%> </td>
+	<td style="text-align: center"><%=session.getAttribute("MADH")%> </td>
+	<td style="text-align: center"><%=session.getAttribute("MAKH")%> </td>
+	<td style="text-align: center"><%=session.getAttribute("NGAYDH")%> </td>
+	<td style="text-align: center"><%=session.getAttribute("THANHTIEN")%> </td>
 	<form action="./AdminSuaDonDH.do" method="POST">
-	    <td><input type="text" name="tinhtrang" value="<%=session.getAttribute("TINHTRANG")%>"/>
+	    <td style="text-align: center"><input type="text" name="tinhtrang" value="<%=session.getAttribute("TINHTRANG")%>"/>
 		<input type="hidden" name="madh" value="<%=session.getAttribute("MADH")%>"/>
 		<input type="submit" name="btnSua" value="Sửa"/>
 	    </td>
