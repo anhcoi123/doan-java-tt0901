@@ -41,13 +41,7 @@ public class AdminSuaDonDH extends org.apache.struts.action.Action {
 	    BO.BO_DONDH.UpdateDonDH(request.getParameter("madh"),request.getParameter("tinhtrang"));
 	}
 	HttpSession Session=request.getSession();
-	DTO.DonDH dondh=new DTO.DonDH();
-	dondh=BO.BO_DONDH.DonDH(request.getParameter("madh"));
-	Session.setAttribute("MADH", dondh.getMaDH());
-	Session.setAttribute("MAKH", dondh.getMaKH());
-	Session.setAttribute("NGAYDH", dondh.getNgayDH());
-	Session.setAttribute("THANHTIEN", dondh.getThanhTien());
-	Session.setAttribute("TINHTRANG", dondh.getTinhtrang());
+	
 	return mapping.findForward("adminDonDH");
     }
 }

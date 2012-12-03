@@ -36,7 +36,18 @@ public class AdminDonDH extends org.apache.struts.actions.DispatchAction {
     public ActionForward sua(ActionMapping mapping, ActionForm form,
 	    HttpServletRequest request, HttpServletResponse response)
 	    throws Exception {
-	
+	HttpSession Session=request.getSession();
+	Session.setAttribute("madhAdmin", request.getParameter("madh"));
+	DTO.DonDH dondh=new DTO.DonDH();
+	if (request.getParameter("madh")!=null)
+	    dondh=BO.BO_DONDH.DonDH(request.getParameter("madh"));
+	if (Session.getAttribute("madhAdmin")!=null)
+	    dondh=BO.BO_DONDH.DonDH(Session.getAttribute("madhAdmin").toString());
+	Session.setAttribute("MADH", dondh.getMaDH());
+	Session.setAttribute("MAKH", dondh.getMaKH());
+	Session.setAttribute("NGAYDH", dondh.getNgayDH());
+	Session.setAttribute("THANHTIEN", dondh.getThanhTien());
+	Session.setAttribute("TINHTRANG", dondh.getTinhtrang());
 	return mapping.findForward("adminSuaDonDH");
     }
     @Override

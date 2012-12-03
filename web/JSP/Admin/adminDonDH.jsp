@@ -21,12 +21,12 @@
 	<% ResultSet rs=BO.BO_DONDH.RSDanhSachDonDH();
 	while(rs!=null && rs.next())
 	{%>
-	<td><%=rs.getString("MADH") %></td>
-	<td><%=rs.getString("MAKH") %></td>
-	<td><%=rs.getString("NGAYDH") %></td>
-	<td><%=rs.getString("THANHTIEN") %></td>
-	<td><%=rs.getString("TINHTRANG") %></td>
-	<td><a href="AdminDonDH.do?method=sua&madh=<%=rs.getString("MADH") %>">Sửa</a> </td>
+	<td style="text-align: center"><%=rs.getString("MADH") %></td>
+	<td style="text-align: center"><%=rs.getString("MAKH") %></td>
+	<td style="text-align: center"><%=rs.getString("NGAYDH") %></td>
+	<td style="text-align: center"><%=rs.getString("THANHTIEN") %></td>
+	<td style="text-align: center"><%=rs.getString("TINHTRANG") %></td>
+	<td style="text-align: center"><a href="AdminDonDH.do?method=sua&madh=<%=rs.getString("MADH") %>">Sửa</a> </td>
 	<%}%>
     </tr>
 </table>
