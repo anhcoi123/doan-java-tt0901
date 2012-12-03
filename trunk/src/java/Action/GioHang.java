@@ -104,16 +104,16 @@ public class GioHang extends DispatchAction {
 	    {
 		gh.setThanhTien(gh.getThanhTien()-lk.getSoLuong() * lk.getDonGia());
 		lk.setSoLuong(SL);
+		gh.setThanhTien(gh.getThanhTien()+lk.getSoLuong() * lk.getDonGia());
+		thanhtienLK = SL * lk.getDonGia();
+		exist = true;
+		break;
 	    }
 	    if (lk.getSoLuong() <= 0)
 	    {
 	        gh.getLinhKien().remove(lk);
 	        break;
 	    }
-	    gh.setThanhTien(gh.getThanhTien()+lk.getSoLuong() * lk.getDonGia());
-	    thanhtienLK = SL * lk.getDonGia();
-	    exist = true;
-	    break;
 	}
 	if (!exist)
 	{
@@ -153,16 +153,17 @@ public class GioHang extends DispatchAction {
 	    {
 		gh.setThanhTien(gh.getThanhTien()-lk.getSoLuong() * lk.getDonGia());
 		lk.setSoLuong(lk.getSoLuong()+SL);
+		gh.setThanhTien(gh.getThanhTien()+lk.getSoLuong() * lk.getDonGia());
+		thanhtienLK = SL * lk.getDonGia();
+		exist = true;
+		break;
 	    }
 	    if (lk.getSoLuong() <= 0)
 	    {
 	        gh.getLinhKien().remove(lk);
 	        break;
 	    }
-	    gh.setThanhTien(gh.getThanhTien()+lk.getSoLuong() * lk.getDonGia());
-	    thanhtienLK = SL * lk.getDonGia();
-	    exist = true;
-	    break;
+	    
 	}
 
 	if (!exist)

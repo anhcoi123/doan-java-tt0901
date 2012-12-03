@@ -118,7 +118,7 @@ function () {
 			for (int i=0; i<4 && rs.next();i++)
 			{%>
 			    <td width="25%"><a href="product.do?id=<%=rs.getString("MALK") %>"><div class="example" style="width:150px; height:150px; overflow:visible"><img id="img<%=rs.getString("MALK") %>" src="<%=rs.getString("HINHANH") %>" class="imgzoom" style=" margin-left:15px;margin-top:15px; position:relative;float:left; width:120px; height:120px; cursor:pointer;overflow:visible;"/></div></a><br />
-				    <a href="product.do?id=<%=rs.getString("MALK") %>"><%=rs.getString("TENLK") %></a><br />
+				    <a href="Product.do?id=<%=rs.getString("MALK") %>"><%=rs.getString("TENLK") %></a><br />
 				    <span style="color: #900; font-weight: bold;"><%=nf.format(rs.getInt("DONGIA"))%>,000 VNĐ</span><br />
 				    <a class="button_add_small" title="Thêm vào giỏ hàng" onclick="themVaoGH('<%=rs.getString("MALK") %>','1')">&nbsp;&nbsp;Thêm</a></td>
 			    <%

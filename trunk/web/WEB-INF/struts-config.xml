@@ -20,8 +20,14 @@
 	<forward name="giohang" path="giohang"/>
 	<forward name="login" path="login"/>
 	<forward name="register" path="register"/>
+	<forward name="product" path="product"/>
 	<forward name="category" path="category"/>
 	<forward name="manufacturer" path="manufacturer"/>
+	<forward name="thanhtoan" path="thanhtoan"/>
+	<forward name="AdminMaster" path="AdminMaster"/>
+	<forward name="adminDonDH" path="adminDonDH"/>
+	<forward name="adminpage" path="adminpage"/>
+	<forward name="adminSuaDonDH" path="adminSuaDonDH"/>
     </global-forwards>
 
     <action-mappings>
@@ -31,6 +37,11 @@
 	<action path="/Login" type="Action.Login">
 	    
 	</action>
+	<action path="/AdminSuaDonDH" type="Action.AdminSuaDonDH"/>
+	<action path="/AdminLogin" type="Action.AdminLogin"/>
+	<action path="/AdminDonDH" parameter="method" type="Action.AdminDonDH"/>
+	<action path="/ThanhToan" type="Action.ThanhToan"/>
+	<action path="/Product" type="Action.Product"/>
 	<action path="/Register" type="Action.Register"/>
 	<action path="/Manufacturer" type="Action.Manufacturer"/>
 	<action path="/Category" type="Action.Category"/>
